@@ -2,13 +2,12 @@
 # https://www.freecodecamp.org/news/build-a-whiteboard-app/
 # Thank you, Juan Romano!
 
-
 import tkinter as tk
 from tkinter.colorchooser import askcolor
 
-
-# Functions to handle drawing on the canvas
-
+#############################################
+# Functions to handle drawing on the canvas #
+#############################################
 
 # function: once assigned to click event, will set is_drawing to True and capture mouse position at beginning of drawing action
 def start_drawing(event):
@@ -55,8 +54,16 @@ def change_line_width(value):
     global line_width
     line_width = int(value)
     
+########################################
+# Functions to add text to the canvas #
+#######################################
 
-# Build GUI with tkinter
+
+
+    
+##########################
+# Build GUI with tkinter #
+##########################
 
 # create window with title and white canvas
 
@@ -112,6 +119,13 @@ canvas.bind("<Button-1>", start_drawing)
 canvas.bind("<B1-Motion>", draw)
 # left mouse button release triggers stop_drawing function
 canvas.bind("<ButtonRelease-1>", stop_drawing)
+
+# instantiate Text class to add text to canvas
+text_widget_label = tk.Label(controls_frame, text="Notes:")
+text_widget_label.pack(side="top", padx=5, pady=5)
+text_widget = tk.Text(controls_frame, height=6, width=120)
+text_widget.pack(side="left", padx=5, pady=5)
+
 # starts main loop of application
 root.mainloop()
 
